@@ -1,0 +1,1 @@
+{"root":["./src/main.ts","./src/router/index.ts","./src/App.vue","./src/components/ForgotPassword.vue","./src/components/Login.vue","./src/components/Order.vue","./src/components/Pay.vue","./src/components/Register.vue","./src/components/Reset.vue","./src/views/Home.vue","./src/views/Index.vue","./src/views/Orders.vue"],"version":"5.9.3"}

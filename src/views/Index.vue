@@ -20,21 +20,21 @@
             <h2 class="text-xl font-bold tracking-[-0.015em]">Booster Water</h2>
           </router-link>
           <nav class="hidden md:flex flex-1 justify-center gap-8">
-            <a
+            <router-link
               class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal"
-              href="#"
-              >How it Works</a
-            >
-            <a
+              to="/home"
+              >Home
+            </router-link>
+            <router-link
               class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal"
-              href="#"
-              >Pricing</a
-            >
-            <a
+              to="/home#how-it-works"
+              >How it Works
+            </router-link>
+            <router-link
               class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal"
-              href="#"
-              >FAQ</a
-            >
+              to="/home#faq"
+              >FAQ
+            </router-link>
           </nav>
           <div class="flex gap-2">
             <router-link
@@ -43,16 +43,18 @@
             >
               <span class="truncate">Orders</span>
             </router-link>
-            <button
+            <router-link
+              to="/home?action=login"
               class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]"
             >
               <span class="truncate">Log In</span>
-            </button>
-            <button
+            </router-link>
+            <router-link
+              to="/home?action=signup"
               class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]"
             >
               <span class="truncate">Sign Up</span>
-            </button>
+            </router-link>
           </div>
         </div>
       </div>

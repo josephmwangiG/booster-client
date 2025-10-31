@@ -82,7 +82,7 @@
         >
           <div class="flex items-center justify-center gap-1.5">
             <span class="material-symbols-outlined !text-base">lock</span>
-            <span>Secure payment powered by AquaDrop Pay</span>
+            <span>Secure payment powered by Booster Water Pay</span>
           </div>
         </div>
       </div>
