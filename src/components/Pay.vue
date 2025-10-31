@@ -11,7 +11,7 @@
       >
         <span class="material-symbols-outlined">close</span>
       </button>
-      <div class="p-8 sm:p-10">
+      <div class="p-8 sm:p-10" v-if="step == 'pay'">
         <div class="text-center">
           <div
             class="inline-flex items-center justify-center size-14 bg-primary/10 dark:bg-primary/20 rounded-full mb-4"
@@ -71,6 +71,7 @@
             </div>
           </div>
           <button
+            @click="step = 'processing'"
             class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-slate-900"
           >
             <span class="truncate">Pay Now</span>
@@ -85,6 +86,137 @@
           </div>
         </div>
       </div>
+      <div class="p-8 sm:p-10" v-if="step == 'processing'">
+        <div
+          class="w-full max-w-sm rounded-xl bg-white py-8 text-center dark:bg-slate-900 dark:border-slate-800"
+        >
+          <div
+            class="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full"
+          >
+            <div
+              class="absolute inset-0 rounded-full border-4 border-slate-200 dark:border-slate-700"
+            ></div>
+            <div
+              class="absolute inset-0 animate-spin rounded-full border-t-4 border-b-4 border-primary"
+            ></div>
+            <span class="material-symbols-outlined text-4xl text-primary"
+              >credit_card</span
+            >
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">
+            Processing Payment
+          </h2>
+          <p class="mt-2 text-slate-600 dark:text-slate-300">
+            Your payment is being processed. This may take a few moments.
+          </p>
+          <div class="mt-6 rounded-lg bg-slate-100 p-3 dark:bg-slate-800">
+            <p class="text-sm font-medium text-slate-700 dark:text-slate-200">
+              Please do not close this window or press the back button.
+            </p>
+          </div>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <button
+              @click="step = 'failed'"
+              class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Cancel</span>
+            </button>
+            <button
+              @click="step = 'completed'"
+              class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Complete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="p-8 sm:p-10" v-if="step == 'completed'">
+        <div
+          class="w-full max-w-sm rounded-xl bg-white py-8 text-center dark:bg-slate-900"
+        >
+          <div
+            class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30"
+          >
+            <span
+              class="material-symbols-outlined text-5xl text-green-600 dark:text-green-400"
+              style="font-variation-settings: 'FILL' 1, 'wght' 600"
+              >task_alt</span
+            >
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">
+            Payment Successful!
+          </h2>
+          <p class="mt-2 text-slate-600 dark:text-slate-300">
+            Your order has been confirmed. A receipt has been sent to your
+            email.
+          </p>
+          <div
+            class="mt-6 rounded-lg bg-slate-100 p-3 dark:bg-slate-800 text-sm"
+          >
+            <p class="font-medium text-slate-500 dark:text-slate-400">
+              Transaction ID
+            </p>
+            <p class="font-semibold text-slate-800 dark:text-slate-200">
+              #TXN-1234567890
+            </p>
+          </div>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <button
+              class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Close</span>
+            </button>
+            <button
+              class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">View Order Details</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="p-8 sm:p-10" v-if="step == 'failed'">
+        <div class="w-full max-w-md rounded-xl bg-white py-8 dark:bg-slate-900">
+          <div
+            class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/50"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-red-600 dark:text-red-400"
+              >error</span
+            >
+          </div>
+          <div class="text-center">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">
+              Payment Failed
+            </h2>
+            <p class="mt-2 text-slate-600 dark:text-slate-300">
+              We were unable to process your payment. Please check your payment
+              details and try again.
+            </p>
+          </div>
+          <div class="mt-8 space-y-4">
+            <button
+              class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] gap-2"
+            >
+              <span class="material-symbols-outlined">refresh</span>
+              <span class="truncate">Try Again</span>
+            </button>
+            <button
+              class="flex w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-base font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Check Payment Details</span>
+            </button>
+            <button
+              class="w-full text-center text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary"
+            >
+              Contact Support
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from "vue";
+const step = ref("pay");
+</script>
