@@ -78,9 +78,10 @@
             </div>
             <div class="mt-6 flex justify-end gap-3">
               <button
+              @click="showModal = true"
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em]"
               >
-                <span class="truncate">View Details</span>
+                <span class="truncate">Pay Now</span>
               </button>
               <button
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] gap-2"
@@ -246,8 +247,12 @@
       </div>
     </section>
   </main>
+  <Pay v-if="showModal" @close="showModal = false" />
 </template>
-<script>
-export default {};
+<script setup lang="ts">
+import Pay from "@/components/Pay.vue";
+import { ref } from "vue";
+
+const showModal = ref(false);
 </script>
 <style lang=""></style>

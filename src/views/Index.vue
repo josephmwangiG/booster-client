@@ -10,14 +10,15 @@
         <div
           class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 h-16"
         >
-          <div
+          <router-link
+            to="/"
             class="flex items-center gap-4 text-slate-800 dark:text-slate-200"
           >
             <div class="text-primary">
               <span class="material-symbols-outlined text-3xl">water_drop</span>
             </div>
             <h2 class="text-xl font-bold tracking-[-0.015em]">Booster Water</h2>
-          </div>
+          </router-link>
           <nav class="hidden md:flex flex-1 justify-center gap-8">
             <a
               class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal"
